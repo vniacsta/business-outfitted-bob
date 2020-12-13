@@ -8,7 +8,7 @@ class StartScene extends Phaser.Scene {
   }
 
   create() {
-    const screen = this.add.image(0, 0, 'start').setOrigin(0);
+    this.add.image(0, 0, 'start').setOrigin(0);
     
     // on keypress any, transition to GameScene
     this.input.keyboard.on('keydown', () => {

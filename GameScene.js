@@ -154,7 +154,7 @@ class GameScene extends Phaser.Scene {
     // Stop sprites moving
     this.physics.pause();
     // Transition to end scene w/fade
-    this.cameras.main.fade(800, 0, 0, 0, false, function (progress) {
+    this.cameras.main.fade(800, 0, 0, 0, false, function (camera, progress) {
       if (progress > .5) {
         this.scene.stop('GameScene');
         this.scene.start('EndScene');
