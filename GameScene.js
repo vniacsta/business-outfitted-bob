@@ -47,20 +47,24 @@ class GameScene extends Phaser.Scene {
       gameState.money.disableBody();
       // increase speed after collision
       speed += 0.1;
+      
       // Move money somewhere else on the canvas
       delete gameState.numCoordinates[`x${gameState.money.x}y${gameState.money.y}`];
-      randomCoord = assignCoords();
+      
       // Place the money sprite somewhere new, then show and activate it
+      randomCoord = assignCoords();
       gameState.money.enableBody(true, randomCoord.x, randomCoord.y);
+      
       // Increase the score randomly between 100 and 1000
       score += (Math.round(Math.random() * 10) * moneyMultiplier);
       // Update cash total text
       scoreText.setText(`Earnings: \$${score}`);
+      
       // Place paper sprite on canvas randomly
       randomCoord = assignCoords();
-      gameState.enemies.create(randomCoord.x, randomCoord.y, 'paper').setScale(.6);
+      gameState.enemies.create(randomCoord.x, randomCoord.y, 'paper').setScale(0.5);
     });
-
+    
     // Collision detection between Bob and paper sprites
     this.physics.add.collider(gameState.player, gameState.enemies, () => this.endGame());
 
@@ -84,7 +88,7 @@ class GameScene extends Phaser.Scene {
 
       return assignedCoord;
     }
-  }
+  } // end of create()
 
   update() {
     // Arrow keys that will move Bob in 4 directions
